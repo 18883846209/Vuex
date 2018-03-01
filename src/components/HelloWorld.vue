@@ -5,11 +5,11 @@
 		<input type="text" v-model="text">
 		<button @click="add">添加事件</button>
 		<div class="eventList">
-			<ol>
+			<ul>
 				<li v-for="item in getAdd" :key="item.id">
 					{{ item.text }}
 					<button @click="del(item.id)">删除</button></li>
-			</ol>
+			</ul>
 		</div>
 	</div>
 </template>
@@ -44,9 +44,11 @@ export default {
 				text: ''
 			};
 			param.text = this.text.trim();
-			if (param.text);
-			this.$store.dispatch('addevent', param);
-			console.log(this.$store.state.list);
+			if (param.text) {
+				this.$store.dispatch('addevent', param);
+				this.text = '';
+				console.log(this.$store.state.list);
+			};
 		},
 		del (id) {
 			this.$store.dispatch('delevent', id);
