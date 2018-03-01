@@ -1,58 +1,35 @@
-// http://eslint.org/docs/user-guide/configuring
+// https://eslint.org/docs/user-guide/configuring
 
 module.exports = {
-	root: true,
-	parser: "babel-eslint",
-	parserOptions: {
-		"ecmaFeatures": {
-            "jsx": true
-        },
-		"sourceType": "module"
-	},
-	env: {
-		"browser": true,
-		"jquery": true,
-		"commonjs": true,
-        "es6": true,
-        "node": true
-	},
-	globals: {
-		"_czc": true
-	},
-	extends: "airbnb",
-	// required to lint *.vue files
-	plugins: [
-		"html"
-	],
-	// check if imports actually resolve
-	settings: {
-		"import/resolver": {
-			"webpack": {
-				"config": "build/webpack.base.conf.js"
-			}
-		}
-	},
-	// add your custom rules here
-	rules: {
-		// don"t require  extension when importing
-		"import/extensions": ["error", "always", {
-			"js": "never"
-		}],
-		// allow optionalDependencies
-		// "import/no-extraneous-dependencies": ["error", {
-		// 	"optionalDependencies": ["test/unit/index.js"]
-		// }],
-		// allow debugger during development
-		"no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
-		"indent": [
+  root: true,
+  parserOptions: {
+    parser: 'babel-eslint'
+  },
+  env: {
+    browser: true,
+  },
+  extends: [
+    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
+    'plugin:vue/essential', 
+    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
+    'standard'
+  ],
+  // required to lint *.vue files
+  plugins: [
+    'vue'
+  ],
+  // add your custom rules here
+  rules: {
+    // allow async-await
+    'generator-star-spacing': 'off',
+    // allow debugger during development
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    "semi": [
 			"error",
-			"tab",
-			{
-				"SwitchCase": 1
-			}
-		],
-		"no-tabs": "off",
-		"quotes": [
+			"always"
+    ],
+    "quotes": [
 			"error",
 			"single",
 			{
@@ -60,46 +37,13 @@ module.exports = {
 				"allowTemplateLiterals": true
 			}
 		],
-		"no-unused-vars": [
+    "no-tabs": 'off',
+    "indent": [
 			"error",
+			"tab",
 			{
-				"vars": "all",
-				"args": "after-used"
+				"SwitchCase": 1
 			}
-		],
-		"brace-style": [
-			"error",
-			"stroustrup"
-		],
-		"semi": [
-			"error",
-			"always"
-		],
-		"no-console": 0,
-		"prefer-const": 0,
-		"prefer-template": 0,
-		"no-param-reassign": 0,
-		"comma-dangle": [
-			1,
-			"never"
-		],
-		"spaced-comment": [
-			0,
-			"always"
-		],
-		"space-before-function-paren": ["error", "never"],
-		"func-names": 0,
-		"no-underscore-dangle": 0,
-		"import/prefer-default-export": 1,
-		"class-methods-use-this": 0,
-		"no-prototype-builtins": 0,
-		"import/no-extraneous-dependencies": 0,
-		"radix": 0,
-		"eol-last": "off",
-		"linebreak-style": "off",
-		"max-len": ["error", 150, {
-			"ignoreComments": true,
-			"ignoreUrls": true
-		}]
-	}
+		]
+  }
 }
