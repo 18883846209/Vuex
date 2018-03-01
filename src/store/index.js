@@ -10,7 +10,7 @@ export default new vuex.Store({
   // mutations,
   // getters
   state: {
-    list: ['aaa']
+    list: []
   },
   getters: {
     getList (state) {
@@ -20,11 +20,18 @@ export default new vuex.Store({
   actions: {
     add (context, param) {
       context.commit('addevent', param)
+    },
+    del (context, text) {
+      context.commit('delevent', text)
     }
   },
   mutations: {
     addevent (state, text) {
       state.list.push(text)
+    },
+    delevent (state, text) {
+      let pos = state.list.indexOf(text)
+      state.list.splice(pos, 1)
     }
   }
 })
