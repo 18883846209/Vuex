@@ -15,6 +15,26 @@
 				</li>
 			</ul>
 		</div>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
+		<p>文字</p>
 	</div>
 </template>
 
@@ -104,6 +124,7 @@ export default {
 				scrollDirection = 'up';
 			} else {
 				// First scroll event
+				scrollDirection = 'noscroll';
 			}
 			scrollAction.x = window.pageXOffset;
 			scrollAction.y = window.pageYOffset;
@@ -114,10 +135,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.hello {
-	height: 100vh;
-	overflow-y: scroll;
-}
 .inputact {
 	position: relative;
 	height: 30px;
