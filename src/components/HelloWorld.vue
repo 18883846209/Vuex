@@ -23,14 +23,17 @@ export default {
 		};
 	},
 	mounted () {
-		// const arr = [
-		//   { id: 1, text: 'aa' },
-		//   { id: 2, text: 'bb' },
-		//   { id: 3, text: 'cc' },
-		//   { id: 4, text: 'dd' },
-		//   { id: 5, text: 'ee' }
-		// ]
-		// console.log(arr.filter(item => item.id === 3))
+		const arr = [
+			{ id: 1, text: 'aa' },
+			{ id: 2, text: 'bb' },
+			{ id: 3, text: 'cc' },
+			{ id: 4, text: 'dd' },
+			{ id: 5, text: 'ee' }
+		];
+		console.log(arr.filter((item, index) => index === 3));
+		// arr.map((item, index) => { console.log(item.text); });
+		const set = Array.from(new Set([1, 3, 3, 2, 5])); // 数组去重
+		console.log(set);
 	},
 	computed: {
 		getAdd () {

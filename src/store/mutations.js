@@ -6,12 +6,16 @@ export default {
 		obj.text.id = state.n;
 		state.list.push(obj.text);
 	},
-	[type.DELEVENT] (state, obj) {
+	[type.DELEVENT] (state, id) {
 		// let pos = state.list.indexOf(obj.text);
-		state.list.filter((o, i) => {
-			if (o.id === obj) {
-				state.list.splice(i, 1);
-			}
-		});
+		if (state.list[id] === id) {
+			state.list.splice(id, 1);
+		} else {
+			state.list.filter((item, index) => {
+				if (item.id === id) {
+					state.list.splice(index, 1);
+				}
+			});
+		}
 	}
 };
