@@ -19,6 +19,8 @@
 </template>
 
 <script>
+let scrollAction = {x: 'undefined', y: 'undefined'};
+let scrollDirection;
 export default {
 	name: 'HelloWorld',
 	data () {
@@ -31,6 +33,7 @@ export default {
 		};
 	},
 	mounted () {
+		let that = this;
 		// const arr = [
 		// 	{ id: 1, text: 'aa' },
 		// 	{ id: 2, text: 'bb' },
@@ -42,6 +45,10 @@ export default {
 		// // arr.map((item, index) => { console.log(item.text); });
 		// const set = Array.from(new Set([1, 3, 3, 2, 5])); // 数组去重
 		// console.log(set);
+		window.onscroll = function () {
+			that.scrollFunc();
+			console.log(scrollDirection);
+		};
 	},
 	computed: {
 		getAdd () {
@@ -75,6 +82,31 @@ export default {
 			} else {
 				this.showdelbtn = false;
 			}
+		},
+		scrollFunc () { // 判断滚动方向
+			if (typeof scrollAction.x === 'undefined') {
+				scrollAction.x = window.pageXOffset;
+				scrollAction.y = window.pageYOffset;
+			}
+			let diffX = scrollAction.x - window.pageXOffset;
+			let diffY = scrollAction.y - window.pageYOffset;
+			if (diffX < 0) {
+				// Scroll right
+				scrollDirection = 'right';
+			} else if (diffX > 0) {
+				// Scroll left
+				scrollDirection = 'left';
+			} else if (diffY < 0) {
+				// Scroll down
+				scrollDirection = 'down';
+			} else if (diffY > 0) {
+				// Scroll up
+				scrollDirection = 'up';
+			} else {
+				// First scroll event
+			}
+			scrollAction.x = window.pageXOffset;
+			scrollAction.y = window.pageYOffset;
 		}
 	}
 };
@@ -82,6 +114,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+.hello {
+	height: 100vh;
+	overflow-y: scroll;
+}
 .inputact {
 	position: relative;
 	height: 30px;
